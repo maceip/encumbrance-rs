@@ -1,0 +1,34 @@
+name: generate a gramine signature, which can be verified later
+
+on:
+  workflow_call:
+    secrets:
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      contents: read
+      attestations: write
+    defaults:
+      run:
+        shell: bash
+    strategy:
+    steps:
+ 
+      - name: upload artifact
+         - run: echo "hi" > /home/runner/work/_temp/notary-server.sig
+        - uses: actions/upload-artifact@v4
+           with:
+              path:/home/runner/work/_temp/notary-server.sig
+          - name: get github to sign our measurement
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: /home/runner/work/_temp/notary-server.sig
