@@ -26,7 +26,7 @@ jobs:
     steps:
  
       - name: upload artifact
-         - run: echo hi > /home/runner/work/_temp/notary-server.sig
+         - run: echo hi /home/runner/work/_temp/notary-server.sig
         - uses: actions/upload-artifact@v4
            with:
               path:/home/runner/work/_temp/notary-server.sig
