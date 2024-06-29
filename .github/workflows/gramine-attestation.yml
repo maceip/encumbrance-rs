@@ -15,23 +15,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      id-token: write
       contents: read
+      id-token: write
       attestations: write
     defaults:
       run:
         shell: bash
     strategy:
     steps:
- 
       - name: create artifact
-       run: echo hi /home/runner/work/_temp/notary-server.sig
-       -name: upload it
-        - uses: actions/upload-artifact@v4
+        run: echo hi /home/runner/work/_temp/notary-server.sig
+      - name: upload it
+        uses: actions/upload-artifact@v4
            with:
               path:/home/runner/work/_temp/notary-server.sig
-          - name: get github to sign our measurement
+      - name: get github to sign our measurement
         uses: actions/attest-build-provenance@v1
         with:
           subject-path: /home/runner/work/_temp/notary-server.sig
