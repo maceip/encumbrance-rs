@@ -21,7 +21,7 @@ jobs:
         shell: bash
     steps:
       - name: create artifact
-        run: echo notary-server.sig
+        run: echo LOL > notary-server.sig
       - name: upload it
         uses: actions/upload-artifact@v4
         with:
