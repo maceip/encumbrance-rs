@@ -25,8 +25,9 @@ jobs:
     strategy:
     steps:
  
-      - name: upload artifact
-         - run: echo hi /home/runner/work/_temp/notary-server.sig
+      - name: create artifact
+       run: echo hi /home/runner/work/_temp/notary-server.sig
+       -name: upload it
         - uses: actions/upload-artifact@v4
            with:
               path:/home/runner/work/_temp/notary-server.sig
