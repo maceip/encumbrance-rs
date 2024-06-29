@@ -21,12 +21,12 @@ jobs:
         shell: bash
     steps:
       - name: create artifact
-        run: echo hi /home/runner/work/_temp/notary-server.sig
+        run: echo notary-server.sig
       - name: upload it
         uses: actions/upload-artifact@v4
         with:
-            path: /home/runner/work/_temp/notary-server.sig
+            path: notary-server.sig
       - name: get github to sign our measurement
         uses: actions/attest-build-provenance@v1
         with:
-          subject-path: /home/runner/work/_temp/notary-server.sig
+          subject-path: notary-server.sig
